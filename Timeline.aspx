@@ -128,7 +128,7 @@
 	        countdown()
         }
         window.onload = function(){
-	        refreshpage(60, "countdown")
+            //refreshpage(60, "countdown")
         }
-        </script>
+    </script>
 </asp:Content>

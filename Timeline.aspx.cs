@@ -130,20 +130,24 @@ public partial class Timeline : System.Web.UI.Page
         #region Procedure
         #region SQLQuery
         strSQL.Append("SELECT ");
-        strSQL.Append("J.Name,J.Detail,U.UsersUID,U.Command,U.CWhen,US.Name UserName,S.Name SiteName, US.Photo UserPhoto ");
+        strSQL.Append("ST.Name StatusName,R.Name ReasonName,J.Name,J.Detail,U.UsersUID,U.Command,U.CWhen,US.Name UserName,S.Name SiteName, US.Photo UserPhoto ");
         strSQL.Append("FROM ");
         strSQL.Append("UserTrace U ");
-        strSQL.Append("INNER JOIN Job J ON U.JobUID = J.UID AND J.Active = '1' ");
         strSQL.Append("INNER JOIN Users US ON U.UsersUID = US.UID AND US.Active = '1' ");
         strSQL.Append("INNER JOIN Site S ON US.SiteUID=S.UID AND S.Active='1' ");
+        strSQL.Append("INNER JOIN Status ST ON U.StatusUID=ST.UID AND ST.Active='1' ");
+        //strSQL.Append("INNER JOIN Job J ON U.JobUID = J.UID AND J.Active = '1' ");
+        strSQL.Append("LEFT JOIN Job J ON U.JobUID = J.UID AND J.Active = '1' ");
+        strSQL.Append("LEFT JOIN Reason R ON U.ReasonUID = R.UID AND R.Active = '1' ");
         strSQL.Append("WHERE ");
+        strSQL.Append("U.Command<>'' AND U.Command<>'AUTO' ");
         if (Request.QueryString["date"] != null)
         {
-            strSQL.Append("CONVERT(DATE,U.CWhen) = '" + Request.QueryString["date"].ToString().Trim() + "' ");
+            strSQL.Append("AND CONVERT(DATE,U.CWhen) = '" + Request.QueryString["date"].ToString().Trim() + "' ");
         }
         else
         {
-            strSQL.Append("CONVERT(DATE,U.CWhen) = CONVERT(DATE,GETDATE()) ");
+            strSQL.Append("AND CONVERT(DATE,U.CWhen) = CONVERT(DATE,GETDATE()) ");
         }
         if (Request.QueryString["user"] != null)
         {
@@ -198,12 +202,22 @@ public partial class Timeline : System.Web.UI.Page
                         //ถ้าข้อมูลแรกของพนักงานท่านนี้ ไม่ใช่สถานะ START (แสดงว่าเปิดงานเมื่อวานแล้วลืมปิด) ให้ข้ามไป
                         continue;
                     }
+                    if (rows[r]["StatusName"].ToString().ToUpper() == "BREAK")
+                    {
+                        mdTimeline.Name = "Break";
+                        mdTimeline.Detail = rows[r]["ReasonName"].ToString();
+                    }
+                    else
+                    {
+                        if(rows[r]["Detail"].ToString() != "")
+                        {
+                            mdTimeline.Name = (rows[r]["Name"].ToString() != "" ? rows[r]["Name"].ToString() : "[-]");
+                            mdTimeline.Detail = rows[r]["Detail"].ToString();
+                        }
+                    }
                     mdTimeline.UserUID = rows[r]["UsersUID"].ToString();
                     mdTimeline.UserName = rows[r]["UserName"].ToString();
                     mdTimeline.UserPhoto = rows[r]["UserPhoto"].ToString();
-
-                    mdTimeline.Name = (rows[r]["Name"].ToString()!=""? rows[r]["Name"].ToString() : "[-]");
-                    mdTimeline.Detail = rows[r]["Detail"].ToString();
                     if (rows[r]["Command"].ToString().ToUpper() == "START")
                     {
                         mdTimeline.StartWhen = rows[r]["CWhen"].ToString();
