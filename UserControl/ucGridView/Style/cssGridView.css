@@ -1,0 +1,266 @@
+﻿table
+{
+  border-spacing:0px;
+}
+.GridView
+{
+	background-image:url('tbGridView.png?v=001');
+}
+.tbGridViewHeader
+{
+	width:100%;
+}
+.tbHD11
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:6px; background-position: 0px 0px; background-repeat:no-repeat;
+}
+.tbGridViewHeader tr:nth-child(1) td:nth-child(1)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:6px; background-position: 0px 0px; background-repeat:no-repeat;
+}
+.tbHD12
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:6px; background-position: 0px -6px; background-repeat:repeat-x;
+}
+.tbGridViewHeader tr:nth-child(1) td:nth-child(2)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:6px; background-position: 0px -6px; background-repeat:repeat-x;
+}
+.tbHD13
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:6px; background-position: 0px -12px; background-repeat:no-repeat;
+}
+.tbGridViewHeader tr:nth-child(1) td:nth-child(3)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:6px; background-position: 0px -12px; background-repeat:no-repeat;
+}
+.tbHD21
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:35px; background-position: 0px -18px; background-repeat:no-repeat;   
+}
+.tbGridViewHeader tr:nth-child(2) td:nth-child(1)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:35px; background-position: 0px -18px; background-repeat:no-repeat;
+}
+.tbHD22
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:35px; background-position: 0px -53px; background-repeat:repeat-x;
+	text-align: center; color: #4F4F4F;overflow:hidden;display:block;
+}
+.tbGridViewHeader tr:nth-child(2) td:nth-child(2)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:35px; background-position: 0px -53px; background-repeat:repeat-x;
+	text-align: center; color: #4F4F4F;overflow:hidden;display:block;
+}
+.tbHD23
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:35px; background-position: 0px -88px; background-repeat:no-repeat;
+}
+.tbGridViewHeader tr:nth-child(2) td:nth-child(3)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:35px; background-position: 0px -88px; background-repeat:no-repeat;
+}
+.tbHD31
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:4px; background-position: 0px -123px; background-repeat:no-repeat;
+}
+.tbGridViewHeader tr:nth-child(3) td:nth-child(1)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:4px; background-position: 0px -123px; background-repeat:no-repeat;
+}
+.tbHD32
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:4px; background-position: 0px -127px; background-repeat:repeat-x;
+}
+.tbGridViewHeader tr:nth-child(3) td:nth-child(2)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:4px; background-position: 0px -127px; background-repeat:repeat-x;
+}
+.tbHD33
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:4px; background-position: 0px -131px; background-repeat:no-repeat;
+}
+.tbGridViewHeader tr:nth-child(3) td:nth-child(3)
+{
+    background-image:url('tbGridView.png?v=001');
+    width:6px;height:4px; background-position: 0px -131px; background-repeat:no-repeat;
+}
+.icBullet
+{
+    background-image:url('tbGridView.png?v=001');
+	width:6px;height:6px;display:inline-block; background-position: 0px -179px; background-repeat:no-repeat;margin-left:5px;
+}
+
+.tbGridView
+{
+	width:100%;border-left:1px solid #cfcfcf;border-top:1px solid #cfcfcf;
+}
+/* แบบไม่ต้องระบุ Class ที่ TR ของ Header
+.tbGridView tr:first-child td
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:22px; background-position: 0px -135px; background-repeat:repeat-x;
+    cursor:pointer;text-align:center;padding:0px 3px 0px 3px;
+    border-bottom:1px solid #cfcfcf;
+    border-right:1px solid #cfcfcf;
+}
+.tbGridView tr:first-child td:hover
+{
+    background-position: 0px -157px;
+}
+*/
+.trGridViewHeader td
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:22px; background-position: 0px -135px; background-repeat:repeat-x;
+    cursor:pointer;text-align:center;padding:0px 3px 0px 3px;
+    border-bottom:1px solid #cfcfcf;
+    border-right:1px solid #cfcfcf;
+}
+.trGridViewHeader td:hover
+{
+    background-position: 0px -157px;
+}
+
+.tbGridView tr td
+{
+    text-align:center;
+    /*
+    border-bottom:1px solid #cfcfcf; แก้ไม่หายซักที
+    background-color:#ffffff;
+    */
+}
+/*
+.tbGridView tr:hover td
+{
+    background-color:#F8F8F8;
+}
+*/
+.trGridViewFix td
+{
+    padding:5px;
+    border-bottom:1px solid #cfcfcf;
+    border-right:1px solid #cfcfcf;
+}
+.trGridView
+{
+    border-bottom:1px solid #cfcfcf;
+}
+.trGridView td
+{
+    padding:5px;
+    border-right:1px solid #cfcfcf;
+    border-bottom:1px solid #cfcfcf;
+}
+.trGridView:hover td
+{
+    background-color:#F8F8F8;
+}
+.tbGridViewFooter
+{
+	background-color:#F0F0F0;border-left:1px solid #cfcfcf;border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;text-align:center;padding:4px;
+}
+
+.gvPaging  
+{
+	background: #f0efef;
+	border-left:1px solid #dddddd;border-right:1px solid #dddddd;border-bottom:1px solid #dddddd;
+}  
+.gvPaging table { margin: 10px 5px;}  
+.gvPaging td span /*Current Page*/
+{
+    padding:3px 7px;
+    font-weight:normal;
+    border:1px solid #dddddd;
+    background-color:#ffffff;
+}
+.gvPaging a /*Other Page*/
+{
+    padding:4px 8px;
+    font-weight: normal;
+    color: #717070;
+}
+.gvPaging a:hover
+{
+    padding:3px 7px;
+    color: #717070;
+    border:1px solid #dddddd;
+    background-color:#fafafa;
+}
+
+.gvDefault
+{
+    width:100%;border-left:1px solid #cfcfcf;border-top:1px solid #cfcfcf;
+}
+.gvDefault th
+{
+    background-image:url('tbGridView.png?v=001');
+    width:auto;height:22px; background-position: 0px -135px; background-repeat:repeat-x;
+    cursor:pointer;border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;text-align:center;padding:0px 3px 0px 3px;
+}
+.gvDefault th:hover
+{
+	width:auto;height:22px; background-position: 0px -157px; background-repeat:repeat-x;
+    cursor:pointer;border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;text-align:center;padding:0px 3px 0px 3px;
+}
+.gvDefault tr td
+{
+    background-color:#ffffff;text-align:center;padding:4px;
+}
+.gvDefault tr:hover td
+{
+    background-color:#F8F8F8;   
+}
+.gvDefault td
+{
+    border-right:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;
+}
+.gvDefault .Pager td
+{
+    padding:0px;margin:0px;
+}
+.borderLess tr:first-child td
+{
+    border-bottom:0px none;border-right:0px none;background-image:none;
+}
+.borderLess tr:hover td
+{
+    border-right:0px;border-bottom:0px;border-left:0px;border-top:0px;background-image:none;
+}
+.tbClear table
+{
+    background-image:none;background-color:inherit;border-left:0 none;border-right:0 none;border-top:0 none;border-bottom:0 none;
+}
+.tbClear tr
+{
+    background-image:none;background-color:inherit;border-left:0 none;border-right:0 none;border-top:0 none;border-bottom:0 none;
+}
+.tbClear td
+{
+    background-image:none;background-color:inherit;border-left:0 none;border-right:0 none;border-top:0 none;border-bottom:0 none;
+}
+.tbClear tr:hover td
+{
+    background-image:none;background-color:inherit;border-left:0 none;border-right:0 none;border-top:0 none;border-bottom:0 none;
+}
+.tbClear td:hover
+{
+    background-image:none;background-color:inherit;border-left:0 none;border-right:0 none;border-top:0 none;border-bottom:0 none;
+}

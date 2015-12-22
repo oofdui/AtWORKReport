@@ -1,0 +1,56 @@
+﻿html
+{
+    font-family:Tahoma;
+    font-size:10pt;
+}
+.tbDefault
+{
+    border-left:1px solid #dddddd;
+    border-top:1px solid #dddddd;
+}
+.tbHeader td /* กำหนดที่ <tr> */
+{
+    /*########### สีพื้นหลังส่วน Header ###########*/
+    background-color:#3F3F3F;
+    border-right:1px solid #dddddd;
+    border-bottom:1px solid #9D9D9D;
+    padding:5px;
+    text-align:center;
+    font-weight:bold;
+    color:#ffffff;
+    font-size:11pt;
+    line-height:27px;
+}
+.tbSubHeader td /* กำหนดที่ <tr> */
+{
+    /*########### สีพื้นหลังส่วน Sub Header ###########*/
+    background-color:#818181;
+    border-right:1px solid #9D9D9D;
+    border-bottom:1px solid #9D9D9D;
+    padding:3px;
+    text-align:center;
+    color:#ffffff;
+    font-weight:normal;
+}
+.tbContent /* กำหนดที่ <tr> */
+{
+    /*########### สีพื้นหลังส่วน Content (ถ้าไม่กำหนด ให้ลบบรรทัดล่างนี้ออกไปได้เลย) ###########*/
+    background-color:#FFFFFF;
+}
+.tbContent td
+{
+    border-right:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+    padding:3px;
+}
+.tbContent2 /* กำหนดที่ <tr> */
+{
+    /*########### สีพื้นหลังส่วน Event : MouseOver ###########*/
+    background-color:#F4F4F4;
+}
+.tbContent2 td
+{
+    border-right:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+    padding:3px;
+}

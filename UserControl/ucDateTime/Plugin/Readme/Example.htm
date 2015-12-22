@@ -1,0 +1,825 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://trentrichardson.com/examples/timepicker/ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+lang="en" xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=UTF-8" http-equiv="Content-Type"><TITLE>Adding 
+a Timepicker to jQuery UI Datepicker</TITLE>
+<META name="Description" content="jQuery Timepicker Addon.  Add a timepicker to your jQuery UI Datepicker.  With options to show only time, format time, and much more.">
+<META name="Keywords" content="jQuery, UI, datepicker, timepicker, datetime, time, format">
+<STYLE type="text/css"> 
+			body,img,p,h1,h2,h3,h4,h5,h6,form,table,td,ul,ol,li,dl,dt,dd,pre,blockquote,fieldset,label{
+				margin:0;
+				padding:0;
+				border:0;
+			}
+			body{ background-color: #777; border-top: solid 10px #7b94b2; font: 90% Arial, Helvetica, sans-serif; padding: 20px; }
+			h1,h2,h3{ margin: 10px 0; }
+			h1{}
+			h2{ color: #f66; }
+			h3{ color: #6b84a2; }
+			p{ margin: 10px 0; }
+			a{ color: #7b94b2; }
+			ul,ol{ margin: 10px 0 10px 40px; }
+			li{ margin: 4px 0; }
+			dl.defs{ margin: 10px 0 10px 40px; }
+			dl.defs dt{ font-weight: bold; line-height: 20px; margin: 10px 0 0 0; }
+			dl.defs dd{ margin: -20px 0 10px 160px; padding-bottom: 10px; border-bottom: solid 1px #eee;}
+			pre{ font-size: 12px; line-height: 16px; padding: 5px 5px 5px 10px; margin: 10px 0; background-color: #e4f4d4; border-left: solid 5px #9EC45F; overflow: auto; }
+
+			.wrapper{ background-color: #ffffff; width: 800px; border: solid 1px #eeeeee; padding: 20px; margin: 0 auto; }
+			#tabs{ margin: 20px -20px; border: none; }
+			#tabs, #ui-datepicker-div, .ui-datepicker{ font-size: 85%; }
+			.clear{ clear: both; }
+			
+			.example-container{ background-color: #f4f4f4; border-bottom: solid 2px #777777; margin: 0 0 20px 40px; padding: 20px; }
+			.example-container input{ border: solid 1px #aaa; padding: 4px; width: 175px; }
+			.ebook{}
+			.ebook img.ebookimg{ float: left; margin: 0 15px 15px 0; width: 100px; }
+			.ebook .buyp a iframe{ margin-bottom: -5px; }
+		</STYLE>
+<LINK rel="stylesheet" type="text/css" href="Example_files/jquery-ui.css" media="all"><LINK 
+rel="stylesheet" type="text/css" href="Example_files/jquery-ui-timepicker-addon.css" 
+media="all">
+<META name="GENERATOR" content="MSHTML 9.00.8112.16490"></HEAD>
+<BODY>
+<DIV class="wrapper">
+<H1>Adding a Timepicker to jQuery UI Datepicker</H1>
+<P>The timepicker addon adds a timepicker to jQuery UI Datepicker, thus the 
+datepicker and slider components (jQueryUI) are required for using any of these. 
+ In addition all datepicker options are still available through the timepicker 
+addon.</P>
+<P>If you are interested in contributing to Timepicker Addon please <A title="Check out Timepicker on GitHub" 
+href="http://github.com/trentrichardson/jQuery-Timepicker-Addon">check it out on 
+GitHub</A>.  If you do make additions please keep in mind I enjoy tabs over 
+spaces,.. But contributions are welcome in any form.</P>
+<P><A title="Back to Blog" href="http://trentrichardson.com/">Back to Blog</A> 
+or <A title="Follow Me on Twitter" href="http://twitter.com/practicalweb">Follow 
+on Twitter</A></P><A style="padding: 10px; border: 4px dotted rgb(232, 232, 232); width: 380px; color: rgb(158, 196, 95); letter-spacing: 1px; font-size: 16px; text-decoration: none; float: right; display: inline-block; background-color: rgb(251, 251, 251);" 
+title="Car Bounce" href="http://carbounce.com/"><IMG style="margin-right: 20px;" 
+alt="Car Bounce" align="left" src="Example_files/logo_small.png">Try my new app 
+to keep you informed of your car's financing status and value.</A>
+<H2>Donation</H2>
+<P>Has this Timepicker Addon been helpful to you?</P>
+<DIV class="donation">
+<FORM method="post" action="https://www.paypal.com/cgi-bin/webscr"><INPUT name="cmd" 
+value="_s-xclick" type="hidden"><INPUT name="hosted_button_id" value="C2QQHR7JQGD28" 
+type="hidden"><INPUT border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" 
+src="Example_files/btn_donate_LG.gif" type="image"><IMG border="0" alt="" src="Example_files/pixel.gif" 
+width="1" height="1"></FORM></DIV>
+<DIV id="tabs">
+<UL>
+  <LI><A title="Getting Started" href="http://trentrichardson.com/examples/timepicker/#tp-getting-started">Getting 
+  Started</A></LI>
+  <LI><A title="Options" href="http://trentrichardson.com/examples/timepicker/#tp-options">Options</A></LI>
+  <LI><A title="Examples" href="http://trentrichardson.com/examples/timepicker/#tp-formatting">Formatting</A></LI>
+  <LI><A title="Examples" href="http://trentrichardson.com/examples/timepicker/#tp-localization">Localization</A></LI>
+  <LI><A title="Examples" href="http://trentrichardson.com/examples/timepicker/#tp-examples">Examples</A></LI></UL><!-- ############################################################################# --><!-- Getting Started
+				<!-- ############################################################################# -->
+<DIV id="tp-getting-started">
+<H2>Getting Started</H2>
+<H3>Highly Recommended</H3>
+<H4>Handling Time eBook</H4>
+<DIV class="ebook">
+<P>Check out the <A title="Handling Time eBook" href="http://trentrichardson.com/ebooks/handling-time/">Handling 
+Time eBook</A> to learn from the basic setup to advanced i18n usage, and from 
+client's javascript to the server's database.</P><A title="Handling Time eBook" 
+href="http://trentrichardson.com/ebooks/handling-time/"><IMG style="margin: 0px 15px 15px 0px; width: 100px; float: left;" 
+alt="Handling Time eBook" src="Example_files/time-book-titlepage.jpg"></A>
+<P class="buyp"><A id="8gxZ" class="sellfy-buy-button" href="https://sellfy.com/p/8gxZ">buy</A> 
+eBook + Example code</P>
+<P class="buyp"><A id="LvAG" class="sellfy-buy-button" href="https://sellfy.com/p/LvAG">buy</A> 
+eBook</P>
+<P class="buyp"><A class="gumroad-button" href="http://gum.co/ZWYO">Handling 
+Time</A></P>
+<DIV class="clear"></DIV></DIV>
+<H4>Subscribe to Blog and Twitter</H4>
+<P><A title="Subscribe to TrentRichardson.com via email" href="http://trentrichardson.com/">Subscribe 
+to my blog via email</A> and follow <A title="Follow Me on Twitter" href="http://twitter.com/practicalweb">@PracticalWeb</A> 
+on Twitter.  I post for nearly every new version, so you know about updates.</P>
+<DIV class="clear"></DIV><BR>
+<H3>Download</H3>
+<P><A title="Download Timepicker Addon" href="Example_files/jquery-ui-timepicker-addon.js">Download 
+Timepicker Addon</A></P>
+<P><A title="Check out Timepicker on GitHub" href="http://github.com/trentrichardson/jQuery-Timepicker-Addon">Download/Contribute 
+on GitHub</A> (Need the entire repo? Find a bug? See if its fixed here)</P>
+<P>There is a small bit of required CSS (<A title="Download CSS" href="Example_files/jquery-ui-timepicker-addon.css">Download</A>):</P><PRE>/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+</PRE><BR>
+<H3>Requirements</H3>
+<P>You also need to include jQuery and jQuery UI with datepicker and slider 
+wigits. You should include them in your page in the following order:</P>
+<OL>
+  <LI>jQuery</LI>
+  <LI>jQueryUI (with datepicker and slider wigits)</LI>
+  <LI>Timepicker</LI></OL><BR>
+<H3>Version</H3>
+<P>Version 1.3.1</P>
+<P>Last updated on 07/07/2013</P>
+<P>jQuery Timepicker Addon is currently available for use in all personal or 
+commercial projects under both MIT and GPL licenses. This means that you can 
+choose the license that best suits your project, and use it accordingly. </P>
+<P><A title="GPL License" href="http://trentrichardson.com/Impromptu/GPL-LICENSE.txt">GPL 
+License</A></P>
+<P><A title="MIT License" href="http://trentrichardson.com/Impromptu/MIT-LICENSE.txt">MIT 
+License</A></P></DIV><!-- ############################################################################# --><!-- Options
+				<!-- ############################################################################# -->
+<DIV id="tp-options">
+<H2>Options</H2>
+<P>The timepicker does inherit all options from datepicker.  However, there are 
+many options that are shared by them both, and many timepicker only options:</P>
+<H3>Localization Options</H3>
+<DL class="defs">
+  <DT>currentText</DT>
+  <DD><EM>Default: "Now", A Localization Setting</EM> - Text for the Now 
+  button.</DD>
+  <DT>closeText</DT>
+  <DD><EM>Default: "Done", A Localization Setting</EM> - Text for the Close 
+  button.</DD>
+  <DT>amNames</DT>
+  <DD><EM>Default: ['AM', 'A'], A Localization Setting</EM> - Array of strings 
+  to try and parse against to determine AM.</DD>
+  <DT>pmNames</DT>
+  <DD><EM>Default: ['PM', 'P'], A Localization Setting</EM> - Array of strings 
+  to try and parse against to determine PM.</DD>
+  <DT>timeFormat</DT>
+  <DD><EM>Default: "HH:mm", A Localization Setting</EM> - String of format 
+  tokens to be replaced with the time. <A title="Formatting" onclick="$('#tabs').tabs('select',2);" 
+  href="http://trentrichardson.com/examples/timepicker/#tp-formatting">See 
+  Formatting</A>.</DD>
+  <DT>timeSuffix</DT>
+  <DD><EM>Default: "", A Localization Setting</EM> - String to place after the 
+  formatted time.</DD>
+  <DT>timeOnlyTitle</DT>
+  <DD><EM>Default: "Choose Time", A Localization Setting</EM> - Title of the 
+  wigit when using only timepicker.</DD>
+  <DT>timeText</DT>
+  <DD><EM>Default: "Time", A Localization Setting</EM> - Label used within 
+  timepicker for the formatted time.</DD>
+  <DT>hourText</DT>
+  <DD><EM>Default: "Hour", A Localization Setting</EM> - Label used to identify 
+  the hour slider.</DD>
+  <DT>minuteText</DT>
+  <DD><EM>Default: "Minute", A Localization Setting</EM> - Label used to 
+  identify the minute slider.</DD>
+  <DT>secondText</DT>
+  <DD><EM>Default: "Second", A Localization Setting</EM> - Label used to 
+  identify the second slider.</DD>
+  <DT>millisecText</DT>
+  <DD><EM>Default: "Millisecond", A Localization Setting</EM> - Label used to 
+  identify the millisecond slider.</DD>
+  <DT>microsecText</DT>
+  <DD><EM>Default: "Microsecond", A Localization Setting</EM> - Label used to 
+  identify the microsecond slider.</DD>
+  <DT>timezoneText</DT>
+  <DD><EM>Default: "Timezone", A Localization Setting</EM> - Label used to 
+  identify the timezone slider.</DD>
+  <DT>isRTL</DT>
+  <DD><EM>Default: false, A Localization Setting</EM> - Right to Left 
+  support.</DD></DL>
+<H3>Alt Field Options</H3>
+<DL class="defs">
+  <DT>altFieldTimeOnly</DT>
+  <DD><EM>Default: true</EM> - When altField is used from datepicker altField 
+  will only receive the formatted time and the original field only receives 
+  date.</DD>
+  <DT>altSeparator</DT>
+  <DD><EM>Default: (separator option)</EM> - String placed between formatted 
+  date and formatted time in the altField.</DD>
+  <DT>altTimeSuffix</DT>
+  <DD><EM>Default: (timeSuffix option)</EM> - String always placed after the 
+  formatted time in the altField.</DD>
+  <DT>altTimeFormat</DT>
+  <DD><EM>Default: (timeFormat option)</EM> - The time format to use with the 
+  altField.</DD></DL>
+<H3>Timezone Options</H3>
+<DL class="defs">
+  <DT>timezoneList</DT>
+  <DD><EM>Default: [generated timezones]</EM> - An array of timezones used to 
+  populate the timezone select. Can be an array of values or an array of 
+  objects: { label: "EDT", value: -240 }.  The value should be the offset number 
+  in minutes.  So "-0400" which is the format "-hhmm", would equate to -240 
+  minutes.</DD></DL>
+<H3>Time Field Options</H3>
+<DL class="defs">
+  <DT>controlType</DT>
+  <DD><EM>Default: 'slider'</EM> - Whether to use 'slider' or 'select'. If 
+  'slider' is unavailable through jQueryUI, 'select' will be used. For advanced 
+  usage you may pass an object which implements "create", "options", "value" 
+  methods to use controls other than sliders or selects.  See the _controls 
+  property in the source code for more details.<PRE>{
+	create: function(tp_inst, obj, unit, val, min, max, step){	
+		// generate whatever controls you want here, just return obj
+	},
+	options: function(tp_inst, obj, unit, opts, val){
+		// if val==undefined return the value, else return obj
+	},
+	value: function(tp_inst, obj, unit, val){
+		// if val==undefined return the value, else return obj
+	}
+}</PRE></DD>
+  <DT>showHour</DT>
+  <DD><EM>Default: null</EM> - Whether to show the hour control.  The default of 
+  null will use detection from timeFormat.</DD>
+  <DT>showMinute</DT>
+  <DD><EM>Default: null</EM> - Whether to show the minute control.  The default 
+  of null will use detection from timeFormat.</DD>
+  <DT>showSecond</DT>
+  <DD><EM>Default: null</EM> - Whether to show the second control.  The default 
+  of null will use detection from timeFormat.</DD>
+  <DT>showMillisec</DT>
+  <DD><EM>Default: null</EM> - Whether to show the millisecond control.  The 
+  default of null will use detection from timeFormat.</DD>
+  <DT>showMicrosec</DT>
+  <DD><EM>Default: null</EM> - Whether to show the microsecond control.  The 
+  default of null will use detection from timeFormat.</DD>
+  <DT>showTimezone</DT>
+  <DD><EM>Default: null</EM> - Whether to show the timezone select.</DD>
+  <DT>showTime</DT>
+  <DD><EM>Default: true</EM> - Whether to show the time selected within the 
+  datetimepicker.</DD>
+  <DT>stepHour</DT>
+  <DD><EM>Default: 1</EM> - Hours per step the slider makes.</DD>
+  <DT>stepMinute</DT>
+  <DD><EM>Default: 1</EM> - Minutes per step the slider makes.</DD>
+  <DT>stepSecond</DT>
+  <DD><EM>Default: 1</EM> - Seconds per step the slider makes.</DD>
+  <DT>stepMillisec</DT>
+  <DD><EM>Default: 1</EM> - Milliseconds per step the slider makes.</DD>
+  <DT>stepMicrosec</DT>
+  <DD><EM>Default: 1</EM> - Microseconds per step the slider makes.</DD>
+  <DT>hour</DT>
+  <DD><EM>Default: 0</EM> - Initial hour set.</DD>
+  <DT>minute</DT>
+  <DD><EM>Default: 0</EM> - Initial minute set.</DD>
+  <DT>second</DT>
+  <DD><EM>Default: 0</EM> - Initial second set.</DD>
+  <DT>millisec</DT>
+  <DD><EM>Default: 0</EM> - Initial millisecond set.</DD>
+  <DT>microsec</DT>
+  <DD><EM>Default: 0</EM> - Initial microsecond set.  Note: Javascript's native 
+  Date object does not natively support microseconds.  Timepicker adds ability 
+  to simply Date.setMicroseconds(m) and Date.getMicroseconds().  Date 
+  comparisons will not acknowledge microseconds.  Use this only for display 
+  purposes.</DD>
+  <DT>timezone</DT>
+  <DD><EM>Default: null</EM> - Initial timezone set.  This is the offset in 
+  minutes.  If null the browser's local timezone will be used.  If you're 
+  timezone is "-0400" you would use -240.  For backwards compatibility you may 
+  pass "-0400", however the timezone is stored in minutes and more 
+reliable.</DD>
+  <DT>hourMin</DT>
+  <DD><EM>Default: 0</EM> - The minimum hour allowed for all dates.</DD>
+  <DT>minuteMin</DT>
+  <DD><EM>Default: 0</EM> - The minimum minute allowed for all dates.</DD>
+  <DT>secondMin</DT>
+  <DD><EM>Default: 0</EM> - The minimum second allowed for all dates.</DD>
+  <DT>millisecMin</DT>
+  <DD><EM>Default: 0</EM> - The minimum millisecond allowed for all dates.</DD>
+  <DT>microsecMin</DT>
+  <DD><EM>Default: 0</EM> - The minimum microsecond allowed for all dates.</DD>
+  <DT>hourMax</DT>
+  <DD><EM>Default: 23</EM> - The maximum hour allowed for all dates.</DD>
+  <DT>minuteMax</DT>
+  <DD><EM>Default: 59</EM> - The maximum minute allowed for all dates.</DD>
+  <DT>secondMax</DT>
+  <DD><EM>Default: 59</EM> - The maximum second allowed for all dates.</DD>
+  <DT>millisecMax</DT>
+  <DD><EM>Default: 999</EM> - The maximum millisecond allowed for all 
+dates.</DD>
+  <DT>microsecMax</DT>
+  <DD><EM>Default: 999</EM> - The maximum microsecond allowed for all 
+dates.</DD>
+  <DT>hourGrid</DT>
+  <DD><EM>Default: 0</EM> - When greater than 0 a label grid will be generated 
+  under the slider.  This number represents the units (in hours) between 
+  labels.</DD>
+  <DT>minuteGrid</DT>
+  <DD><EM>Default: 0</EM> - When greater than 0 a label grid will be generated 
+  under the slider.  This number represents the units (in minutes) between 
+  labels.</DD>
+  <DT>secondGrid</DT>
+  <DD><EM>Default: 0</EM> - When greater than 0 a label grid will be genereated 
+  under the slider.  This number represents the units (in seconds) between 
+  labels.</DD>
+  <DT>millisecGrid</DT>
+  <DD><EM>Default: 0</EM> - When greater than 0 a label grid will be genereated 
+  under the slider.  This number represents the units (in milliseconds) between 
+  labels.</DD>
+  <DT>microsecGrid</DT>
+  <DD><EM>Default: 0</EM> - When greater than 0 a label grid will be genereated 
+  under the slider.  This number represents the units (in microseconds) between 
+  labels.</DD></DL>
+<H3>Other Options</H3>
+<DL class="defs">
+  <DT>showButtonPanel</DT>
+  <DD><EM>Default: true</EM> - Whether to show the button panel at the bottom.  
+  This is generally needed.</DD>
+  <DT>timeOnly</DT>
+  <DD><EM>Default: false</EM> - Hide the datepicker and only provide a time 
+  interface.</DD>
+  <DT>onSelect</DT>
+  <DD><EM>Default: null</EM> - Function to be called when a date is chosen or 
+  time has changed (parameters: datetimeText, datepickerInstance).</DD>
+  <DT>alwaysSetTime</DT>
+  <DD><EM>Default: true</EM> - Always have a time set internally, even before 
+  user has chosen one.</DD>
+  <DT>separator</DT>
+  <DD><EM>Default: " "</EM> - When formatting the time this string is placed 
+  between the formatted date and formatted time.</DD>
+  <DT>pickerTimeFormat</DT>
+  <DD><EM>Default: (timeFormat option)</EM> - How to format the time displayed 
+  within the timepicker.</DD>
+  <DT>pickerTimeSuffix</DT>
+  <DD><EM>Default: (timeSuffix option)</EM> - String to place after the 
+  formatted time within the timepicker.</DD>
+  <DT>showTimepicker</DT>
+  <DD><EM>Default: true</EM> - Whether to show the timepicker within the 
+  datepicker.</DD>
+  <DT>addSliderAccess</DT>
+  <DD><EM>Default: false</EM> - Adds the <A title="jQueryUI Slider Access Plugin" 
+  href="http://trentrichardson.com/examples/jQuery-SliderAccess/">sliderAccess 
+  plugin</A> to sliders within timepicker</DD>
+  <DT>sliderAccessArgs</DT>
+  <DD><EM>Default: null</EM> - Object to pass to sliderAccess when used.</DD>
+  <DT>defaultValue</DT>
+  <DD><EM>Default: null</EM> - String of the default time value placed in the 
+  input on focus when the input is empty.</DD>
+  <DT>minDateTime</DT>
+  <DD><EM>Default: null</EM> - Date object of the minimum datetime allowed.  
+  Also available as minDate.</DD>
+  <DT>maxDateTime</DT>
+  <DD><EM>Default: null</EM> - Date object of the maximum datetime allowed. Also 
+  Available as maxDate.</DD>
+  <DT>parse</DT>
+  <DD><EM>Default: 'strict'</EM> - How to parse the time string.  Two methods 
+  are provided: 'strict' which must match the timeFormat exactly, and 'loose' 
+  which uses javascript's new Date(timeString) to guess the time.  You may also 
+  pass in a function(timeFormat, timeString, options) to handle the parsing 
+  yourself, returning a simple object: <PRE>{
+	hour: 19,
+	minute: 10,
+	second: 23,
+	millisec: 45,
+	microsec: 23,
+	timezone: '-0400'
+}</PRE></DD></DL></DIV><!-- ############################################################################# --><!-- Formatting
+				<!-- ############################################################################# -->
+<DIV id="tp-formatting">
+<H2>Formatting Your Time</H2>
+<P>The default format is "HH:mm".  To use 12 hour time use something similar to: 
+"hh:mm tt".  When both "t" and lower case "h" are present in the timeFormat, 12 
+hour time will be used.</P>
+<DL class="defs">
+  <DT>H</DT>
+  <DD>Hour with no leading 0 (24 hour)</DD>
+  <DT>HH</DT>
+  <DD>Hour with leading 0 (24 hour)</DD>
+  <DT>h</DT>
+  <DD>Hour with no leading 0 (12 hour)</DD>
+  <DT>hh</DT>
+  <DD>Hour with leading 0 (12 hour)</DD>
+  <DT>m</DT>
+  <DD>Minute with no leading 0</DD>
+  <DT>mm</DT>
+  <DD>Minute with leading 0</DD>
+  <DT>s</DT>
+  <DD>Second with no leading 0</DD>
+  <DT>ss</DT>
+  <DD>Second with leading 0</DD>
+  <DT>l</DT>
+  <DD>Milliseconds always with leading 0</DD>
+  <DT>c</DT>
+  <DD>Microseconds always with leading 0</DD>
+  <DT>t</DT>
+  <DD>a or p for AM/PM</DD>
+  <DT>T</DT>
+  <DD>A or P for AM/PM</DD>
+  <DT>tt</DT>
+  <DD>am or pm for AM/PM</DD>
+  <DT>TT</DT>
+  <DD>AM or PM for AM/PM</DD>
+  <DT>z</DT>
+  <DD>Timezone as defined by timezoneList</DD>
+  <DT>Z</DT>
+  <DD>Timezone in Iso 8601 format (+04:45)</DD>
+  <DT>'...'</DT>
+  <DD>Literal text (Uses single quotes)</DD></DL>
+<P>Formats are used in the following ways:</P>
+<UL>
+  <LI>timeFormat option</LI>
+  <LI>altTimeFormat option</LI>
+  <LI>pickerTimeFormat option</LI>
+  <LI>$.datepicker.formatTime(format, timeObj, options) utility method</LI>
+  <LI>$.datepicker.parseTime(format, timeStr, options) utility method</LI></UL>
+<P>For help with  formatting the date portion, visit the datepicker 
+documentation for <A title="jQuery UI Datepicker Formatting" href="http://docs.jquery.com/UI/Datepicker/formatDate">formatting 
+dates</A>.</P></DIV><!-- ############################################################################# --><!-- Localization
+				<!-- ############################################################################# -->
+<DIV id="tp-localization">
+<H2>Working with Localizations</H2>
+<P>Timepicker comes with many translations and localizations, thanks to all the 
+contributors.  They can be found in the i18n folder in the git repo.</P>
+<P>The quick and cheap way to use localizations is to pass in options to a 
+timepicker instance:</P><PRE>$('#example123').timepicker({
+	timeOnlyTitle: 'Выберите время',
+	timeText: 'Время',
+	hourText: 'Часы',
+	minuteText: 'Минуты',
+	secondText: 'Секунды',
+	currentText: 'Теперь',
+	closeText: 'Закрыть'
+});
+</PRE>
+<P>However, if you plan to use timepicker extensively you will need to include 
+(build your own) localization.  It is simply assigning those same variables to 
+an object.  As you see in the example below we maintain a separate object for 
+timepicker.  This way we aren't bound to any changes within datepicker.</P><PRE>$.datepicker.regional['ru'] = {
+	closeText: 'Закрыть',
+	prevText: '&lt;Пред',
+	nextText: 'След&gt;',
+	currentText: 'Сегодня',
+	monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь',
+	'Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+	monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн',
+	'Июл','Авг','Сен','Окт','Ноя','Дек'],
+	dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+	dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+	dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+	weekHeader: 'Не',
+	dateFormat: 'dd.mm.yy',
+	firstDay: 1,
+	isRTL: false,
+	showMonthAfterYear: false,
+	yearSuffix: ''
+};
+$.datepicker.setDefaults($.datepicker.regional['ru']);
+
+
+$.timepicker.regional['ru'] = {
+	timeOnlyTitle: 'Выберите время',
+	timeText: 'Время',
+	hourText: 'Часы',
+	minuteText: 'Минуты',
+	secondText: 'Секунды',
+	millisecText: 'Миллисекунды',
+	timezoneText: 'Часовой пояс',
+	currentText: 'Сейчас',
+	closeText: 'Закрыть',
+	timeFormat: 'HH:mm',
+	amNames: ['AM', 'A'],
+	pmNames: ['PM', 'P'],
+	isRTL: false
+};
+$.timepicker.setDefaults($.timepicker.regional['ru']);
+</PRE>
+<P>Now all you have to do is call timepicker and the Russian localization is 
+used.  Generally you only need to include the localization file, it will 
+setDefaults() for you.</P>
+<P>You can also visit <A title="localization for datepicker" href="http://docs.jquery.com/UI/Datepicker/Localization" 
+target="_BLANK">localization for datepicker</A> for more information about 
+datepicker localizations.</P></DIV><!-- ############################################################################# --><!-- Examples
+				<!-- ############################################################################# -->
+<DIV id="tp-examples">
+<H2>Examples</H2>
+<UL>
+  <LI><A title="Basic Initializations" href="http://trentrichardson.com/examples/timepicker/#basic_examples">Basic 
+  Initializations</A></LI>
+  <LI><A title="Using Timezones" href="http://trentrichardson.com/examples/timepicker/#timezone_examples">Using 
+  Timezones</A></LI>
+  <LI><A title="Slider Modifications" href="http://trentrichardson.com/examples/timepicker/#slider_examples">Slider 
+  Modifications</A></LI>
+  <LI><A title="Alternate Field" href="http://trentrichardson.com/examples/timepicker/#alt_examples">Alternate 
+  Fields</A></LI>
+  <LI><A title="Time Restraints" href="http://trentrichardson.com/examples/timepicker/#rest_examples">Time 
+  Restraints</A></LI>
+  <LI><A title="Utilities" href="http://trentrichardson.com/examples/timepicker/#utility_examples">Utilities</A></LI></UL>
+<H3 id="basic_examples">Basic Initializations</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Add a simple datetimepicker to jQuery UI's datepicker</P>
+<DIV><INPUT id="basic_example_1" name="basic_example_1" type="text"></DIV><PRE>$('#basic_example_1').datetimepicker();
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Add only a timepicker:</P>
+<DIV><INPUT id="basic_example_2" name="basic_example_2" type="text"></DIV><PRE>$('#basic_example_2').timepicker();
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Format the time:</P>
+<DIV><INPUT id="basic_example_3" name="basic_example_3" type="text"></DIV><PRE>$('#basic_example_3').datetimepicker({
+	timeFormat: "hh:mm tt"
+});
+</PRE></DIV>
+<H3 id="timezone_examples">Using Timezones</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Simplest timezone usage:</P>
+<DIV><INPUT id="timezone_example_1" name="timezone_example_1" type="text"></DIV><PRE>$('#timezone_example_1').datetimepicker({
+	timeFormat: 'hh:mm tt z'
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Define your own timezone options:</P>
+<DIV><INPUT id="timezone_example_2" name="timezone_example_2" type="text"></DIV><PRE>$('#timezone_example_2').datetimepicker({
+	timeFormat: 'HH:mm z',
+	timezoneList: [ 
+			{ value: -300, label: 'Eastern'}, 
+			{ value: -360, label: 'Central' }, 
+			{ value: -420, label: 'Mountain' }, 
+			{ value: -480, label: 'Pacific' } 
+		]
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>You may also use timezone string abbreviations for values.  This should be 
+used with caution.  Computing accurate javascript Date objects may not be 
+possible when trying to retrieve or set the date from timepicker (see setDate 
+and getDate examples below).  For simple input values however this should 
+work.</P>
+<DIV><INPUT id="timezone_example_3" name="timezone_example_3" type="text"></DIV><PRE>$('#timezone_example_3').datetimepicker({
+	timeFormat: 'HH:mm z',
+	timezone: 'MT',
+	timezoneList: [ 
+			{ value: 'ET', label: 'Eastern'}, 
+			{ value: 'CT', label: 'Central' }, 
+			{ value: 'MT', label: 'Mountain' }, 
+			{ value: 'PT', label: 'Pacific' } 
+		]
+});
+
+</PRE></DIV>
+<H3 id="slider_examples">Slider Modifications</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Add a grid to each slider:</P>
+<DIV><INPUT id="slider_example_1" name="slider_example_1" type="text"></DIV><PRE>$('#slider_example_1').timepicker({
+	hourGrid: 4,
+	minuteGrid: 10,
+	timeFormat: 'hh:mm tt'
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Set the interval step of sliders:</P>
+<DIV><INPUT id="slider_example_2" name="slider_example_2" type="text"></DIV><PRE>$('#slider_example_2').datetimepicker({
+	timeFormat: 'HH:mm:ss',
+	stepHour: 2,
+	stepMinute: 10,
+	stepSecond: 10
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Add sliderAccess plugin for touch devices:</P>
+<DIV><INPUT id="slider_example_3" name="slider_example_3" type="text"></DIV><PRE>$('#slider_example_3').datetimepicker({
+	addSliderAccess: true,
+	sliderAccessArgs: { touchonly: false }
+});</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Use dropdowns instead of sliders.  By default if slider is not available 
+dropdowns will be used.</P>
+<DIV><INPUT id="slider_example_4" name="slider_example_4" type="text"></DIV><PRE>$('#slider_example_4').datetimepicker({
+	controlType: 'select',
+	timeFormat: 'hh:mm tt'
+});</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Create your own control by implementing the create, options, and value 
+methods. If you want to use your new control for all instances use the 
+$.timepicker.setDefaults({controlType:myControl}). Here we implement jQueryUI's 
+spinner control (jQueryUI 1.9+).</P>
+<DIV><INPUT id="slider_example_5" name="slider_example_5" type="text"></DIV><PRE>var myControl=  {
+	create: function(tp_inst, obj, unit, val, min, max, step){
+		$('&lt;input class="ui-timepicker-input" value="'+val+'" style="width:50%"&gt;')
+			.appendTo(obj)
+			.spinner({
+				min: min,
+				max: max,
+				step: step,
+				change: function(e,ui){ // key events
+						// don't call if api was used and not key press
+						if(e.originalEvent !== undefined)
+							tp_inst._onTimeChange();
+						tp_inst._onSelectHandler();
+					},
+				spin: function(e,ui){ // spin events
+						tp_inst.control.value(tp_inst, obj, unit, ui.value);
+						tp_inst._onTimeChange();
+						tp_inst._onSelectHandler();
+					}
+			});
+		return obj;
+	},
+	options: function(tp_inst, obj, unit, opts, val){
+		if(typeof(opts) == 'string' &amp;&amp; val !== undefined)
+				return obj.find('.ui-timepicker-input').spinner(opts, val);
+		return obj.find('.ui-timepicker-input').spinner(opts);
+	},
+	value: function(tp_inst, obj, unit, val){
+		if(val !== undefined)
+			return obj.find('.ui-timepicker-input').spinner('value', val);
+		return obj.find('.ui-timepicker-input').spinner('value');
+	}
+};
+
+$('#slider_example_5').datetimepicker({
+	controlType: myControl
+});</PRE></DIV>
+<H3 id="alt_examples">Alternate Fields</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Alt field in the simplest form:</P>
+<DIV><INPUT id="alt_example_1" name="alt_example_1" value="09/15/2012" type="text"><INPUT 
+id="alt_example_1_alt" name="alt_example_1_alt" value="10:15" type="text"></DIV><PRE>$('#alt_example_1').datetimepicker({
+	altField: "#alt_example_1_alt"
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>With datetime in both:</P>
+<DIV><INPUT id="alt_example_2" name="alt_example_2" type="text"><INPUT id="alt_example_2_alt" 
+name="alt_example_2_alt" type="text"></DIV><PRE>$('#alt_example_2').datetimepicker({
+	altField: "#alt_example_2_alt",
+	altFieldTimeOnly: false
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Format the altField differently:</P>
+<DIV><INPUT id="alt_example_3" name="alt_example_3" type="text"><INPUT id="alt_example_3_alt" 
+name="alt_example_3_alt" type="text"></DIV><PRE>$('#alt_example_3').datetimepicker({
+	altField: "#alt_example_3_alt",
+	altFieldTimeOnly: false,
+	altFormat: "yy-mm-dd",
+	altTimeFormat: "h:m t",
+	altSeparator: " @ "
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>With inline mode using altField:</P>
+<DIV><INPUT id="alt_example_4_alt" name="alt_example_4_alt" type="text"><SPAN 
+id="alt_example_4"></SPAN></DIV><PRE>$('#alt_example_4').datetimepicker({
+	altField: "#alt_example_4_alt",
+	altFieldTimeOnly: false
+});
+</PRE></DIV>
+<H3 id="rest_examples">Time Restraints</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Set the min/max hour of every date:</P>
+<DIV><INPUT id="rest_example_1" name="rest_example_1" type="text"></DIV><PRE>$('#rest_example_1').timepicker({
+	hourMin: 8,
+	hourMax: 16
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Set the min/max date numerically:</P>
+<DIV><INPUT id="rest_example_2" name="rest_example_2" type="text"></DIV><PRE>$('#rest_example_2').datetimepicker({
+	numberOfMonths: 2,
+	minDate: 0,
+	maxDate: 30
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Set the min/max date and time with a Date object:</P>
+<DIV><INPUT id="rest_example_3" name="rest_example_3" type="text"></DIV><PRE>$('#rest_example_3').datetimepicker({
+	minDate: new Date(2010, 11, 20, 8, 30),
+	maxDate: new Date(2010, 11, 31, 17, 30)
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Restrict a start and end date by using onSelect and onClose events for more 
+control over functionality:</P>
+<P>For more examples and advanced usage grab the <A title="Handling Time eBook" 
+href="http://trentrichardson.com/ebooks/handling-time/">Handling Time 
+eBook</A>.</P>
+<DIV><INPUT id="rest_example_4_start" name="rest_example_4_start" 
+type="text"><INPUT id="rest_example_4_end" name="rest_example_4_end" 
+type="text"></DIV><PRE>var startDateTextBox = $('#rest_example_4_start');
+var endDateTextBox = $('#rest_example_4_end');
+
+startDateTextBox.datetimepicker({ 
+	timeFormat: 'HH:mm z',
+	onClose: function(dateText, inst) {
+		if (endDateTextBox.val() != '') {
+			var testStartDate = startDateTextBox.datetimepicker('getDate');
+			var testEndDate = endDateTextBox.datetimepicker('getDate');
+			if (testStartDate &gt; testEndDate)
+				endDateTextBox.datetimepicker('setDate', testStartDate);
+		}
+		else {
+			endDateTextBox.val(dateText);
+		}
+	},
+	onSelect: function (selectedDateTime){
+		endDateTextBox.datetimepicker('option', 'minDate', startDateTextBox.datetimepicker('getDate') );
+	}
+});
+endDateTextBox.datetimepicker({ 
+	timeFormat: 'HH:mm z',
+	onClose: function(dateText, inst) {
+		if (startDateTextBox.val() != '') {
+			var testStartDate = startDateTextBox.datetimepicker('getDate');
+			var testEndDate = endDateTextBox.datetimepicker('getDate');
+			if (testStartDate &gt; testEndDate)
+				startDateTextBox.datetimepicker('setDate', testEndDate);
+		}
+		else {
+			startDateTextBox.val(dateText);
+		}
+	},
+	onSelect: function (selectedDateTime){
+		startDateTextBox.datetimepicker('option', 'maxDate', endDateTextBox.datetimepicker('getDate') );
+	}
+});
+</PRE></DIV>
+<H3 id="utility_examples">Utilities</H3><!-- ============= example -->
+<DIV class="example-container">
+<P>Get and Set Datetime with the getDate and setDate methods.  This example uses 
+timezone to demonstrate the timepicker regonizes the timezones and computes the 
+offsets when getting and setting.</P>
+<DIV><INPUT id="utility_example_1" name="utility_example_1" type="text"><BUTTON 
+id="utility_example_1_setdt" value="1">Set Datetime</BUTTON><BUTTON id="utility_example_1_getdt" 
+value="1">Get Datetime</BUTTON></DIV><PRE>var ex13 = $('#utility_example_1');
+
+ex13.datetimepicker({
+	timeFormat: 'hh:mm tt z',
+	separator: ' @ ',
+	showTimezone: true
+});
+
+$('#utility_example_1_setdt').click(function(){
+	ex13.datetimepicker('setDate', (new Date()) );
+});
+
+$('#utility_example_1_getdt').click(function(){
+	alert(ex13.datetimepicker('getDate'));
+});
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Use the utility function to format your own time. 
+$.datepicker.formatTime(format, time, options)</P>
+<DL class="defs">
+  <DT>format</DT>
+  <DD>required - string represenation of the time format to use</DD>
+  <DT>time</DT>
+  <DD>required - hash: { hour, minute, second, millisecond, timezone }</DD>
+  <DT>options</DT>
+  <DD>optional - hash of any options in regional translation (ampm, amNames, 
+  pmNames..)</DD></DL>
+<P>Returns a time string in the specified format.</P>
+<DIV>
+<DIV id="utility_example_2"></DIV></DIV><PRE>$('#utility_example_2').text(
+	$.datepicker.formatTime('HH:mm z', { hour: 14, minute: 36, timezone: '+2000' }, {})
+);
+</PRE></DIV><!-- ============= example -->
+<DIV class="example-container">
+<P>Use the utility function to parses a formatted time. 
+$.datepicker.parseTime(format, timeString, options)</P>
+<DL class="defs">
+  <DT>format</DT>
+  <DD>required - string represenation of the time format to use</DD>
+  <DT>time</DT>
+  <DD>required - time string matching the format given in parameter 1</DD>
+  <DT>options</DT>
+  <DD>optional - hash of any options in regional translation (ampm, amNames, 
+  pmNames..)</DD></DL>
+<P>Returns an object with hours, minutes, seconds, milliseconds, timezone.</P>
+<DIV>
+<DIV id="utility_example_3"></DIV></DIV><PRE>$('#utility_example_3').text(JSON.stringify( 
+	$.datepicker.parseTime('HH:mm:ss:l z', "14:36:21:765 +2000", {}) 
+));
+</PRE></DIV></DIV></DIV></DIV>
+<SCRIPT type="text/javascript" src="Example_files/jquery-1.10.1.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Example_files/jquery-ui.min.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Example_files/jquery-ui-timepicker-addon.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Example_files/jquery-ui-sliderAccess.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+			
+			$(function(){
+				$('#tabs').tabs();
+		
+				$('.example-container > pre').each(function(i){
+					eval($(this).text());
+				});
+			});
+			
+		</SCRIPT>
+
+<SCRIPT type="text/javascript" src="Example_files/api_buttons.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="Example_files/gumroad.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</SCRIPT>
+
+<SCRIPT type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-7602218-1");
+		pageTracker._trackPageview();
+		} catch(err) {}</SCRIPT>
+</BODY></HTML>

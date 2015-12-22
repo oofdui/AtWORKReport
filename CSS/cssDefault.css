@@ -1,0 +1,83 @@
+﻿@import url("/Font/cssFontFace.css");
+
+body 
+{
+    height:100%;
+    padding:0px;
+    margin:0px;
+    font-family:Tahoma;
+    font-size:10pt;
+    color:#333;
+    background-color:#fafafa;
+}
+H1,H2,H3,H4
+{
+    font-family:thaisans_neuebold,tahoma;
+    margin:0px;padding:0px;
+}
+P
+{
+    font-family:thaisans_neueregular,tahoma;
+    margin:0px;padding:0px;
+}
+ol,ul,li
+{
+    margin:0px;
+}
+ul
+{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+H1
+{
+    font-weight:normal;
+    font-size:20pt;
+}
+H2
+{
+    font-weight:normal;
+    font-size:18pt;
+}
+H3
+{
+    font-weight:normal;
+    font-size:16pt;
+}
+H4
+{
+    font-weight:normal;
+    font-size:14pt;
+}
+img
+{
+    border-style: none;
+    border-color: inherit;
+    border-width: 0px;
+    text-align:center;
+    vertical-align:middle;
+}
+A:link {color:#188a5c; text-decoration: none;}
+A:visited {color:#188a5c; text-decoration: none;}
+A:active {color:#5a5a5a; text-decoration: none;}
+A:hover {color:#bac42f; text-decoration:none;}
+ 
+hr {
+  border: none;
+  background-color: #d3d3d3;
+  color: #d3d3d3;
+  height: 1px;
+}
+.validDefault
+{
+    font-family:Tahoma;
+    font-size:10pt;
+    color:Red;
+    text-decoration:blink;
+    margin:0px 5px 0px 5px;
+}
+table 
+{
+  border-spacing:0;
+  border-collapse:collapse;
+}

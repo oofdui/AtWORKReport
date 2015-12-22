@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>@WORK Reporting</title>
+    <link href="CSS/cssDefault.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/cssCustom.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/cssControl.css" rel="stylesheet" type="text/css" />
+    <script src="Plugin/jQuery/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder id="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="margin:20px 0px 0px 20px;">
+            <b>MENU : </b><a href="JobReport.aspx">Job Report</a> | <a href="SummaryDashboard.aspx">Summary Dashboard</a> | <a href="Timeline.aspx">Timeline</a>
+        </div>
+        <div style="text-align:left;padding:10px;margin:20px;background-color:#fff;border:1px solid #ddd;">
+            <div>
+                <asp:ContentPlaceHolder id="cphBody" runat="server">
+                    
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
