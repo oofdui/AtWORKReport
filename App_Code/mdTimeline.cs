@@ -50,6 +50,13 @@ public class mdTimeline
         get { return _endWhen; }
         set { _endWhen = value; }
     }
+    private string _cssClass;
+    public string cssClass
+    {
+        get { return _cssClass; }
+        set { _cssClass = value; }
+    }
+
     public mdTimeline()
     {
         //
@@ -65,5 +72,6 @@ public class mdTimeline
         _detail = "";
         _startWhen = "";
         _endWhen = "";
+        _cssClass = "";
     }
 }

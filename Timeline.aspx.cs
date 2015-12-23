@@ -204,6 +204,7 @@ public partial class Timeline : System.Web.UI.Page
                     }
                     if (rows[r]["StatusName"].ToString().ToUpper() == "BREAK")
                     {
+                        mdTimeline.cssClass = "reason";
                         mdTimeline.Name = "Break";
                         mdTimeline.Detail = rows[r]["ReasonName"].ToString();
                     }
@@ -211,8 +212,8 @@ public partial class Timeline : System.Web.UI.Page
                     {
                         if(rows[r]["Detail"].ToString() != "")
                         {
-                            mdTimeline.Name = (rows[r]["Name"].ToString() != "" ? rows[r]["Name"].ToString() : "[-]");
-                            mdTimeline.Detail = rows[r]["Detail"].ToString();
+                            mdTimeline.Name = (rows[r]["Name"].ToString() != "" ? rows[r]["Name"].ToString().Replace("'","\"") : "[-]");
+                            mdTimeline.Detail = rows[r]["Detail"].ToString().Replace("'", "\"");
                         }
                     }
                     mdTimeline.UserUID = rows[r]["UsersUID"].ToString();
@@ -229,18 +230,32 @@ public partial class Timeline : System.Web.UI.Page
 
                     if (mdTimeline.UserUID != "" && mdTimeline.UserName != "" && mdTimeline.UserPhoto != "" && mdTimeline.Name != "" && mdTimeline.Detail != "" && mdTimeline.StartWhen != "" && mdTimeline.EndWhen != "")
                     {
-                        strTimeline.Append("{'start':'" + DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm") + "',");
-                        strTimeline.Append("'end':'" + DateTime.Parse(mdTimeline.EndWhen).ToString("HH:mm") + "',");
+                        strTimeline.Append("{'start':'" + DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm:ss") + "',");
+                        strTimeline.Append("'end':'" + DateTime.Parse(mdTimeline.EndWhen).ToString("HH:mm:ss") + "',");
                         strTimeline.Append("'title':'" + mdTimeline.Name + " : " + mdTimeline.Detail.Replace(Environment.NewLine, " ") + "',");
-                        strTimeline.Append("'class': 'schedule" + scheduleClass.ToString() + "' },");
+                        if (mdTimeline.cssClass != "")
+                        {
+                            strTimeline.Append("'class': '" + mdTimeline.cssClass + scheduleClass.ToString() + "' },");
+                        }
+                        else
+                        {
+                            strTimeline.Append("'class': 'schedule" + scheduleClass.ToString() + "' },");
+                        }
                         mdTimeline.Clear();
                     }
                     else if (r == rows.Count() - 1)
                     {
-                        strTimeline.Append("{'start':'" + (mdTimeline.StartWhen!=""?DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm"):"00:00") + "',");
-                        strTimeline.Append("'end':'" + DateTime.Now.ToString("HH:mm") + "',");
+                        strTimeline.Append("{'start':'" + (mdTimeline.StartWhen!=""?DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm:ss"):"00:00") + "',");
+                        strTimeline.Append("'end':'" + DateTime.Now.ToString("HH:mm:ss") + "',");
                         strTimeline.Append("'title':'" + mdTimeline.Name + " : " + mdTimeline.Detail.Replace(Environment.NewLine, " ") + "',");
-                        strTimeline.Append("'class': 'schedule" + scheduleClass.ToString() + "' },");
+                        if (mdTimeline.cssClass != "")
+                        {
+                            strTimeline.Append("'class': '" + mdTimeline.cssClass + scheduleClass.ToString() + "' },");
+                        }
+                        else
+                        {
+                            strTimeline.Append("'class': 'schedule" + scheduleClass.ToString() + "' },");
+                        }
                         mdTimeline.Clear();
                     }
                 }

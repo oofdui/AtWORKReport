@@ -10,40 +10,80 @@
             background-color: #FF6F6F;
             border-right:1px solid #7F7F7F;
         }
+        .reason1{
+            background-color: #C48A8A;
+            border-right:1px solid #7F7F7F;
+        }
         .schedule2{
             background-color: #FFB66F;
+            border-right:1px solid #7F7F7F;
+        }
+        .reason2{
+            background-color: #D8B089;
             border-right:1px solid #7F7F7F;
         }
         .schedule3{
             background-color: #FFE26F;
             border-right:1px solid #7F7F7F;
         }
+        .reason3{
+            background-color: #ECD680;
+            border-right:1px solid #7F7F7F;
+        }
         .schedule4{
             background-color: #DFFF6F;
+            border-right:1px solid #7F7F7F;
+        }
+        .reason4{
+            background-color: #D5EB8A;
             border-right:1px solid #7F7F7F;
         }
         .schedule5{
             background-color: #79EA4D;
             border-right:1px solid #7F7F7F;
         }
+        .reason5{
+            background-color: #8ACB71;
+            border-right:1px solid #7F7F7F;
+        }
         .schedule6{
             background-color: #60E4AA;
+            border-right:1px solid #7F7F7F;
+        }
+        .reason6{
+            background-color: #91CBB1;
             border-right:1px solid #7F7F7F;
         }
         .schedule7{
             background-color: #60C3E4;
             border-right:1px solid #7F7F7F;
         }
+        .reason7{
+            background-color: #8BB9C8;
+            border-right:1px solid #7F7F7F;
+        }
         .schedule8{
             background-color: #D18EFB;
+            border-right:1px solid #7F7F7F;
+        }
+        .reason8{
+            background-color: #B280D1;
             border-right:1px solid #7F7F7F;
         }
         .schedule9{
             background-color: #FF7AFA;
             border-right:1px solid #7F7F7F;
         }
+        .reason9{
+            background-color: #D9BAD8;
+            border-right:1px solid #7F7F7F;
+        }
         .schedule10{
             background-color: #FF7A93;
+            border-right:1px solid #7F7F7F;
+        }
+        .reason10{
+            background-color: #E39FAC;
             border-right:1px solid #7F7F7F;
         }
         #scheduler{
@@ -128,7 +168,7 @@
 	        countdown()
         }
         window.onload = function(){
-            //refreshpage(60, "countdown")
+            refreshpage(60, "countdown")
         }
     </script>
 </asp:Content>
