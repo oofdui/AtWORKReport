@@ -170,7 +170,7 @@ public partial class Timeline : System.Web.UI.Page
                 strSQL.Append("AND US.GroupsUID = " + Request.QueryString["group"].ToString() + " ");
             }
         }
-        strSQL.Append("ORDER BY U.UID,U.CWhen;");
+        strSQL.Append("ORDER BY J.UsersUID,U.CWhen;");
         #endregion
         dt = clsSQL.Bind(strSQL.ToString(), clsSQL.DBType.SQLServer, "cs");
         if (dt != null && dt.Rows.Count > 0)
@@ -230,8 +230,8 @@ public partial class Timeline : System.Web.UI.Page
 
                     if (mdTimeline.UserUID != "" && mdTimeline.UserName != "" && mdTimeline.UserPhoto != "" && mdTimeline.Name != "" && mdTimeline.Detail != "" && mdTimeline.StartWhen != "" && mdTimeline.EndWhen != "")
                     {
-                        strTimeline.Append("{'start':'" + DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm:ss") + "',");
-                        strTimeline.Append("'end':'" + DateTime.Parse(mdTimeline.EndWhen).ToString("HH:mm:ss") + "',");
+                        strTimeline.Append("{'start':'" + DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm") + "',");
+                        strTimeline.Append("'end':'" + DateTime.Parse(mdTimeline.EndWhen).ToString("HH:mm") + "',");
                         strTimeline.Append("'title':'" + mdTimeline.Name + " : " + mdTimeline.Detail.Replace(Environment.NewLine, " ") + "',");
                         if (mdTimeline.cssClass != "")
                         {
@@ -245,8 +245,8 @@ public partial class Timeline : System.Web.UI.Page
                     }
                     else if (r == rows.Count() - 1)
                     {
-                        strTimeline.Append("{'start':'" + (mdTimeline.StartWhen!=""?DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm:ss"):"00:00") + "',");
-                        strTimeline.Append("'end':'" + DateTime.Now.ToString("HH:mm:ss") + "',");
+                        strTimeline.Append("{'start':'" + (mdTimeline.StartWhen!=""?DateTime.Parse(mdTimeline.StartWhen).ToString("HH:mm"):"00:00") + "',");
+                        strTimeline.Append("'end':'" + DateTime.Now.ToString("HH:mm") + "',");
                         strTimeline.Append("'title':'" + mdTimeline.Name + " : " + mdTimeline.Detail.Replace(Environment.NewLine, " ") + "',");
                         if (mdTimeline.cssClass != "")
                         {
