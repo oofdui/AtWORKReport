@@ -123,6 +123,7 @@ public partial class Timeline : System.Web.UI.Page
         var strSQL = new StringBuilder();
         var dt = new DataTable();
         var tempUserUID = "";
+        var tempCommand = "";
         var scheduleClass = 0;
         var mdTimeline = new mdTimeline();
         List<string> userUIDs = new List<string>();
@@ -194,9 +195,14 @@ public partial class Timeline : System.Web.UI.Page
                 strTimeline.Append("{");
                 strTimeline.Append("'name':'" + rows[0]["UserName"].ToString() + " ["+rows[0]["SiteName"].ToString()+"]',");
                 strTimeline.Append("'appointments':[");
-
+                tempCommand = "";
                 for (int r = 0; r < rows.Count(); r++)
                 {
+                    //กันกรณีมีการ STOP งานซ้ำกันมากกว่าหนึ่งครั้ง
+                    if (rows[r]["Command"].ToString().ToUpper() == tempCommand)
+                    {
+                        continue;
+                    }
                     if (r==0 && rows[r]["Command"].ToString().ToUpper() != "START")
                     {
                         //ถ้าข้อมูลแรกของพนักงานท่านนี้ ไม่ใช่สถานะ START (แสดงว่าเปิดงานเมื่อวานแล้วลืมปิด) ให้ข้ามไป
@@ -258,6 +264,7 @@ public partial class Timeline : System.Web.UI.Page
                         }
                         mdTimeline.Clear();
                     }
+                    tempCommand = rows[r]["Command"].ToString().ToUpper();
                 }
                 strTimeline.Append("]");
                 strTimeline.Append("},");
